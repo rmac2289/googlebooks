@@ -1,0 +1,18 @@
+* {
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+}
+form {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background: lightgrey;
+}
+label {
+    margin-right: 5px;
+}
+input {
+    margin-right: 5px;
+}
+button {
+    
+}
