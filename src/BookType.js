@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function BookType(){
+class BookType extends Component{
+    
+    render(){
     return (
         <div className="booktype">
             <label htmlFor="booktype">Book Type:</label>
-            <select id="booktype" form="searchForm">
+            <select value={this.props.bookType} onChange={this.props.booktypeChanged} id="booktype" form="searchForm">
                 <option value="">No Filter</option>
                 <option value="free-ebooks">Free E-Books</option>
                 <option value="paid-ebooks">Paid E-Books</option>
@@ -13,5 +15,5 @@ function BookType(){
             </select>
         </div>
     )
-}
+}}
 export default BookType;
