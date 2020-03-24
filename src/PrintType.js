@@ -8,12 +8,14 @@ class PrintType extends Component{
     return (
         <div className="filters">
             <label htmlFor="print">Print Type:</label>
-            <select value={this.props.printType} onChange={this.props.printTypeChanged} id="print" form="searchForm">
+            <select className="select" value={this.props.printType} onChange={this.props.printTypeChanged} id="print" form="searchForm">
                 <option value="">All</option>
                 <option value="books">Books</option>
                 <option value="magazines">Magazines</option>
             </select>
+            <div>
             <BookType booktypeChanged={this.props.booktypeChanged}/>
+            </div>
         </div>
     )
     }

@@ -6,7 +6,7 @@ class BookType extends Component{
     return (
         <div className="booktype">
             <label htmlFor="booktype">Book Type:</label>
-            <select value={this.props.bookType} onChange={this.props.booktypeChanged} id="booktype" form="searchForm">
+            <select className="selectbook" value={this.props.bookType} onChange={this.props.booktypeChanged} id="booktype" form="searchForm">
                 <option value="">No Filter</option>
                 <option value="free-ebooks">Free E-Books</option>
                 <option value="paid-ebooks">Paid E-Books</option>

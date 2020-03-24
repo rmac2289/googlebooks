@@ -5,14 +5,24 @@
 form {
     padding-top: 1%;
     padding-bottom: 1%;
-    background: lightgrey;
+    background: maroon;
+    color: white;
 }
-label {
+.searchLabel {
     margin-right: 5px;
+    background: maroon;
 }
 input {
     margin-right: 5px;
+    text-align: left;
+    height: 25px;
+    font-size: 14px;
+    margin-top: auto;
+    
+    
 }
 button {
-    
+    margin-top: auto;
+    height: 30px;
+    width: 80px;
 }

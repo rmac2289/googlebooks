@@ -35,9 +35,9 @@ class App extends Component {
       let url;
       event.preventDefault();
       if (this.state.bookType === 'No Filter'){
-        url =  `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + {apikey}
+        url =  `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E`
       } else {
-        url = `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&filter=`+ this.state.bookType + {apikey}
+        url = `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&filter=`+ this.state.bookType + `&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E`
       }
       const options =  {
         method: 'GET',
@@ -75,12 +75,11 @@ class App extends Component {
     
   
   render(){
-    const testvar = this.state.books
-    console.log(testvar)
+    const listItems = this.state.books
     
   return (
     <div className="App">
-      <header>
+      <header id="header">
         <h1>Google Book Search</h1>
       </header>
       <SearchBar 
@@ -90,7 +89,7 @@ class App extends Component {
       searchChanged={this.searchChanged}
       />
       <ul>
-        {testvar.map((value,index) => {
+        {listItems.map((value,index) => {
           return <List key={index}
           title={value[1].volumeInfo.title}
           authors={value[1].volumeInfo.authors[0]}

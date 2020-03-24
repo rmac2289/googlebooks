@@ -8,7 +8,7 @@ class SearchBar extends Component {
         return (
             <div>
             <form id="searchForm" onSubmit={this.props.handleSubmit}>
-                <label htmlFor="search">Search</label>
+                <label className="searchLabel" htmlFor="search">Search</label>
                 <input type="text" value={this.props.value} onChange={this.props.searchChanged}id="search"></input>
                 <button type="submit">Search</button>
             </form>
