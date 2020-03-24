@@ -13,12 +13,7 @@ class App extends Component {
       q: '',
       printType: 'All',
       bookType: 'No Filter',
-      title: '',
-      authors: '',
-      description: '',
-      
-
-
+      books: []
     }
   }
     searchChanged = (event) => {
@@ -37,8 +32,13 @@ class App extends Component {
       }) 
     }
     handleSubmit = (event) => {
+      let url;
       event.preventDefault();
-      const url = 'https://www.googleapis.com/books/v1/volumes?q=harrypotter&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E'
+      if (this.state.bookType === 'No Filter'){
+        url =  `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E`
+      } else {
+        url = `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&filter=`+ this.state.bookType + `&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E`
+      }
       const options =  {
         method: 'GET',
         headers: {
@@ -53,21 +53,15 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        console.log(data);
         const element = document.getElementById("image");
       element.classList.remove("image");
-        const books = Object.values(data.items)
-        console.log(books)
-        
-        books.forEach((book) => {
-          console.log(book)
+        const books = Object.keys(data.items).map(function(key){
+          return [Number(key),data.items[key]];
+          })
+    
         this.setState({
-          title: book.volumeInfo.title,
-          description: book.volumeInfo.description,
-          authors: book.volumeInfo.authors[0],
-          image: book.volumeInfo.imageLinks.smallThumbnail
+          books      
         })
-      })
       })
       .catch(err => {
         this.setState({
@@ -81,6 +75,9 @@ class App extends Component {
     
   
   render(){
+    const testvar = this.state.books
+    console.log(testvar)
+    
   return (
     <div className="App">
       <header>
@@ -93,12 +90,15 @@ class App extends Component {
       searchChanged={this.searchChanged}
       />
       <ul>
-        <List 
-        title={this.state.title}
-        description={this.state.description}
-        authors={this.state.authors}
-        image={this.state.image}
-        />
+        {testvar.map((value,index) => {
+          return <List key={index}
+          title={value[1].volumeInfo.title}
+          authors={value[1].volumeInfo.authors[0]}
+          image={value[1].volumeInfo.imageLinks.smallThumbnail}
+          description={value[1].volumeInfo.description}
+          />
+             })}
+          <List />
       </ul>
     </div>
   );
