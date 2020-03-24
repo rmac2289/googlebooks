@@ -35,9 +35,9 @@ class App extends Component {
       let url;
       event.preventDefault();
       if (this.state.bookType === 'No Filter'){
-        url =  `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E`
+        url =  `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&key=` + {apikey}
       } else {
-        url = `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&filter=`+ this.state.bookType + `&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E`
+        url = `https://www.googleapis.com/books/v1/volumes?q=` + this.state.q + `&printType=` + this.state.printType + `&filter=`+ this.state.bookType + `&key=` + {apikey}
       }
       const options =  {
         method: 'GET',
