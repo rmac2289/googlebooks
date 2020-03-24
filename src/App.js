@@ -38,7 +38,7 @@ class App extends Component {
     }
     handleSubmit = (event) => {
       event.preventDefault();
-      const url = 'https://www.googleapis.com/books/v1/volumes?q=harrypotter&key=AIzaSyD8UWoPDZssIjtLLe_ogggrymmRyrg_71E'
+      const url = 'https://www.googleapis.com/books/v1/volumes?q=harrypotter&key={apikey}'
       const options =  {
         method: 'GET',
         headers: {
